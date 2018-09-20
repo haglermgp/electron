@@ -65,6 +65,18 @@ function createWindow (argument) {
 	Menu.setApplicationMenu(menu);
 }
 
+// Exports process that is exclusive of main.js to the client (or part of renderization)
+
+exports.openWindow = () => {
+	let newWin = new BrowserWindow({ width: 400, height: 200 })
+
+	win.loadURL(url.format({
+		pathname: path.join(__dirname, 'src/Contact.html'),
+		protocol: 'file',
+		slashes: true
+	}))
+}
+
 // This method will be called when the elecetron has finished
 // initialization and is ready to create browser windows
 // some APIS can only be used after this event occurs
